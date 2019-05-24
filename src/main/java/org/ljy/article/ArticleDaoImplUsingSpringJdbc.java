@@ -17,6 +17,10 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao {
 	static final String COUNT_ALL = "SELECT count(articleId) count FROM article";
 	
 	static final String GET_ARTICLE = "SELECT articleId, title, content, userId, name, cdate FROM article WHERE articleId=?";
+	
+	static final String UPDATE_ARTICLE = "UPDATE article SET title=?, content=? WHERE articleId=?";
+	
+	static final String DELETE_ARTICLE = "DELETE FROM article WHERE articleId=?";
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
@@ -50,6 +54,23 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao {
 	@Override
 	public int countAll() {
 		return jdbcTemplate.queryForObject(COUNT_ALL, Integer.class);
+	}
+	
+	/**
+	 * 글 수정
+	 */
+	@Override
+	public int updateArticle(Article article) {
+		return jdbcTemplate.update(UPDATE_ARTICLE, article.getTitle(),
+				article.getContent(), article.getArticleId());
+	}
+
+	/**
+	 * 글 삭제
+	 */
+	@Override
+	public int deleteArticle(String articleId) {
+		return jdbcTemplate.update(DELETE_ARTICLE, articleId);
 	}
 
 }

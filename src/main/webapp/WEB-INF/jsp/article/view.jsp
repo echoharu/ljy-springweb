@@ -9,6 +9,8 @@
 <title>게시글 조회</title>
 </head>
 <body>	
+	<%@ include file="/WEB-INF/jsp/header.jsp"%>
+	<a href="./app/article/list">[게시글 목록]</a>
 	<table>
 		<thead>
 			<tr>				
@@ -27,7 +29,6 @@
 					<td>${article.name }</td>
 					<td>${article.cdate }</td>
 				</tr>
-			<a href="./app/articles">[게시글 목록]</a>
 		</tbody>
 	</table>
 </body>
