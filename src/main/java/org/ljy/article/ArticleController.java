@@ -149,7 +149,7 @@ public class ArticleController {
 		return "article/update";
 	}
 
-	
+
 	@PostMapping("/article/clear")
 	public String update(Article article, HttpSession session, Model model,
 			@SessionAttribute("MEMBER") Member member) {
