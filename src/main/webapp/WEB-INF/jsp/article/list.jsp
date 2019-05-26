@@ -26,6 +26,7 @@ th {
 	<p>
 		<a href="./app/article/addForm">글쓰기</a>
 	</p>
+
 	<p>전체 ${totalCount }건</p>
 	<form action="./app/article/list">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"
@@ -35,9 +36,9 @@ th {
 	<table>
 		<thead>
 			<tr>
-				<th>글번호</th>
+				<th>번호</th>
 				<th>제목</th>
-				<th>등록자</th>
+				<th>이름</th>
 				<th>등록일시</th>
 			</tr>
 		</thead>
@@ -45,7 +46,7 @@ th {
 			<c:forEach var="article" items="${articleList}">
 				<tr>
 					<td><a href="./app/article/view?articleId=${article.articleId }">${article.articleId }</a></td>
-					<td><a href="./app/article/view?articleId=${article.articleId }">${article.title }</a></td>
+					<td>${article.title }</td>
 					<td>${article.name }</td>
 					<td>${article.cdate }</td>
 				</tr>

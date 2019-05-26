@@ -9,17 +9,18 @@ public interface ArticleDao {
 	
 	void insert(Article article);
 
-	
-	void update(Article article);
-
 
 	List<Article> selectAll(int offset, int count);
 	
 	
 	int countAll();
 	
-	int updateArticle(Article article);
-
+	
 	
 	int deleteArticle(String articleId);
+
+
+	int updateArticle(Article article);
+
+
 }

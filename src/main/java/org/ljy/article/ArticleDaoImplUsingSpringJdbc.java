@@ -18,7 +18,7 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao {
 	
 	static final String GET_ARTICLE = "SELECT articleId, title, content, userId, name, cdate FROM article WHERE articleId=?";
 	
-	static final String UPDATE_ARTICLE = "UPDATE article SET title=?, content=? WHERE articleId=?";
+	static final String UPDATE_ARTICLE = "UPDATE article SET title=?, content= ? WHERE articleId=?";
 	
 	static final String DELETE_ARTICLE = "DELETE FROM article WHERE articleId=?";
 	@Autowired
@@ -40,11 +40,6 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao {
 		jdbcTemplate.update(INSERT, article.getTitle(), article.getContent());
 		
 	}
-
-	@Override
-	public void update(Article article) {
-		// TODO update() 메서드 구현
-	}
 	
 	@Override
 	public List<Article> selectAll(int offset, int count) {
@@ -59,9 +54,10 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao {
 	/**
 	 * 글 수정
 	 */
+
 	@Override
 	public int updateArticle(Article article) {
-		return jdbcTemplate.update(UPDATE_ARTICLE, article.getTitle(),
+		return jdbcTemplate.update(UPDATE_ARTICLE, article.getTitle(), 
 				article.getContent(), article.getArticleId());
 	}
 
