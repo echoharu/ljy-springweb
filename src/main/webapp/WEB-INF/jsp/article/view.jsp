@@ -27,9 +27,11 @@
 		<span>등록일시 : ${article.cdate }</span>
 	</p>
 	<p>
+		
 		<a href="<c:url value="./app/article/update?articleId=${article.articleId }"/>">[수정]</a>
 
 		<a href="<c:url value="./app/article/delete?articleId=${article.articleId }"/>">[삭제]</a>
+		
 	</p>
 </body>
 </head>
