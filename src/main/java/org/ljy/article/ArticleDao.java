@@ -15,12 +15,8 @@ public interface ArticleDao {
 	
 	int countAll();
 	
-	
-	
-	int deleteArticle(String articleId);
-
-
 	int updateArticle(Article article);
 
+	int deleteArticle(String articleId, String userId);
 
 }

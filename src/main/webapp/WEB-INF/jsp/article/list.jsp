@@ -46,7 +46,7 @@ th {
 			<c:forEach var="article" items="${articleList}">
 				<tr>
 					<td><a href="./app/article/view?articleId=${article.articleId }">${article.articleId }</a></td>
-					<td>${article.title }</td>
+					<td><a href="./app/article/view?articleId=${article.articleId }">${article.title }</a></td>
 					<td>${article.name }</td>
 					<td>${article.cdate }</td>
 				</tr>
