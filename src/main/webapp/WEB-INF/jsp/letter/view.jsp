@@ -19,7 +19,7 @@
 	<p>
 		<a href="./app/letter/listReceived">받은목록</a>
 		<a href="./app/letter/listSend">보낸목록</a>
-			<a href="./app/article/delete?articleId=${article.articleId }"
+			<a href="./app/article/delete?receiverId=${letter.receiverId }"
 				onclick="return confirmDelete();">글삭제</a>
 	</p>
 	<hr />

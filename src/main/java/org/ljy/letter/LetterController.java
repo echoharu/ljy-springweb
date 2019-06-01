@@ -93,7 +93,7 @@ public class LetterController {
 			// 자신의 편지가 아닐 경우 삭제되지 않음
 			throw new RuntimeException("No Authority!");
 
-		if ("SEND".equals(mode))
+		if ("SENT".equals(mode))
 			return "redirect:/app/letter/listSend";
 		else
 			return "redirect:/app/letter/listReceived";
