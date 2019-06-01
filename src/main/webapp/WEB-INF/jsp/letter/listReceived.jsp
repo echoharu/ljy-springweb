@@ -26,6 +26,12 @@ th {
 	<p>
 		<a href="./app/letter/letterForm">편지쓰기</a>
 	</p>
+	<p>전체 ${totalCount }건</p>
+	<form action="./app/article/list">
+		<input type="number" name="page" value="${param.page }" placeholder="페이지"
+			min="1" max="${totalCount / 20 + 1 }" step="1" style="width: 50px;">
+		<button type="submit">조회</button>
+	</form>
 
 	<table>
 		<thead>
@@ -43,7 +49,7 @@ th {
 					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.letterId }</a></td>
 					<td><a href="./app/letter/view?letterId=${letter.letterId }">${letter.title }</a></td>
 					<td>${letter.senderId }</td>
-					<td>${letter.senderrName }</td>
+					<td>${letter.senderName }</td>
 					<td>${letter.cdate }</td>
 				</tr>
 			</c:forEach>
