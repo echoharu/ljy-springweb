@@ -24,6 +24,9 @@
 			<mvc:mapping path="/article/add*" />
 			<mvc:mapping path="/article/update*" />
 			<mvc:mapping path="/article/delete" />
+			<mvc:mapping path="/letter/listOfSender*" />
+			<mvc:mapping path="/letter/listOfReceiver*" />
+			<mvc:mapping path="/letter/delete" />
 			<bean class="org.ljy.book.chap13.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

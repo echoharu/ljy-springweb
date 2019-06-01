@@ -11,59 +11,61 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LetterDao {
 	
-	static final String INSERT = "INSERT letter(title, content, senderId, senderName, receiverId, receiverName) values(?,?,?,?,?,?)";
-
-	static final String SELECT_SEND_ALL = "SELECT letterId, title, receiverId, receiverName, cdate where senderId=?";
+	static final String LIST_LETTERS_OF_SENDER = "select letterId,title,receiverId,receiverName,cdate from letter where senderId=?";
 	
-	static final String SELECT_RECEIVER_ALL = "SELECT letterId, title, senderId, senderName, cdate from letter where receiverId=?";
+	static final String LIST_LETTERS_OF_RECEIVER = "select letterId,title,senderId,senderName,cdate from letter where receiverId=?";
+	
+	static final String ADD_LETTER = "insert letter(title,content,senderId,senderName,receiverId,receiverName) values(?,?,?,?,?,?);";
+	
+	static final String GET_LETTER = "select letterId,title,content,senderId,senderName,receiverId,receiverName,cdate from letter where letterId=? and (senderId=? or receiverId=?)";
+	
+	static final String DELETE_LETTER = "delete from letter where letterId=? and (senderId=? or receiverId=?)";
 
-	static final String GET_LETTER = "SELECT letterId, title, content, senderId, senderName, receiverId, receiverName, cdate from letter where letterId=? and senderId=? or receiverId=?";
-
-	static final String DELETE_LETTER = "delete from letter where letterId=? and senderId=? or receiverId =?";
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	final RowMapper<Letter> letterRowMapper = new BeanPropertyRowMapper<>(Letter.class);
+	RowMapper<Letter> letterRowMapper = new BeanPropertyRowMapper<>(
+			Letter.class);
 
 	/**
-	 * 글 등록
+	 * 보낸 목록
 	 */
-	public int addLetter(Letter letter) {
-		return jdbcTemplate.update(INSERT, letter.getTitle(),
-				letter.getContent(), letter.getSenderId(),letter.getSenderName(),
-				letter.getReceiverId(), letter.getReceiverName());
-	}
-	
-	/**
-	 * 글 조회
-	 */
-	public Letter getLetter(String letterId) {
-		return jdbcTemplate.queryForObject(GET_LETTER, letterRowMapper,
-				letterId);
-	}
-	
-	/**
-	 * 보낸목록 조회
-	 */
-	public Letter sendLetter(String senderId) {
-		return jdbcTemplate.queryForObject(SELECT_SEND_ALL, letterRowMapper,
+	public List<Letter> listLettersOfSender(String senderId) {
+		return jdbcTemplate.query(LIST_LETTERS_OF_SENDER, letterRowMapper,
 				senderId);
 	}
 
-	
 	/**
-	 * 받은목록 조회
+	 * 받은 목록
 	 */
-	public Letter receiveLetter(String receiverId) {
-		return jdbcTemplate.queryForObject(SELECT_RECEIVER_ALL, letterRowMapper,
+	public List<Letter> listLettersOfReceiver(String receiverId) {
+		return jdbcTemplate.query(LIST_LETTERS_OF_RECEIVER, letterRowMapper,
 				receiverId);
 	}
 
 	/**
-	 * 글 삭제
+	 * 조회
 	 */
-	public int deleteLetter(String letterId, String senderId, String receiverId) {
-		return jdbcTemplate.update(DELETE_LETTER, letterId, senderId,receiverId);
+	public Letter getLetter(String letterId, String memberId) {
+		return jdbcTemplate.queryForObject(GET_LETTER, letterRowMapper,
+				letterId, memberId, memberId);
+	}
+
+	/**
+	 * 추가
+	 */
+	public int addLetter(Letter letter) {
+		return jdbcTemplate.update(ADD_LETTER, letter.getTitle(),
+				letter.getContent(), letter.getSenderId(),
+				letter.getSenderName(), letter.getReceiverId(),
+				letter.getReceiverName());
+	}
+
+	/**
+	 * 삭제
+	 */
+	public int deleteLetter(String letterId, String memberId) {
+		return jdbcTemplate.update(GET_LETTER, letterId, memberId, memberId);
 	}
 
 }

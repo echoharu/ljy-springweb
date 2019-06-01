@@ -10,10 +10,6 @@ public class Letter {
 	String receiverId;
 	String receiverName;
 	String cdate;
-
-	public Letter() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 	public String getLetterId() {
