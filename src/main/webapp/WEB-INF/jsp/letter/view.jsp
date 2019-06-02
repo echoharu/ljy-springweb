@@ -18,22 +18,24 @@
 	<h2>상세정보</h2>
 	<p>
 		<a href="./app/letter/listReceived">받은목록</a>
-		<a href="./app/letter/listSend">보낸목록</a>
-			<a href="./app/article/delete?receiverId=${letter.receiverId }"
+		<a href="./app/letter/listSent">보낸목록</a>
+
+		<a href="./app/letter/delete?letterId=${letter.letterId }"
 				onclick="return confirmDelete();">글삭제</a>
+
 	</p>
 	<hr />
 	<p>
 		<span>번호 : ${letter.letterId }</span>  
 	</p>
 	<p>
-		<span>내 아이디 : ${letter.senderId }</span> | <span> 내 이름 : ${letter.senderName }</span>
+		<span>보낸사람 아이디 : ${letter.senderId }</span> | <span> 보낸사람 이름 : ${letter.senderName }</span>
 	</p>
 	<p>
 		<span style="font-weight: bold;">제목 : ${letter.title }</span> | <span>내용 : ${letter.content }</span>
 	</p>
 	<p>
-		<span>상대방 아이디 : ${letter.receiverId }</span> | <span>상대방 이름 : ${letter.receiverName }</span>
+		<span>받는사람 아이디 : ${letter.receiverId }</span> | <span>받는사람 이름 : ${letter.receiverName }</span>
 	</p>
 	<p>
 		<span>등록일시 : ${letter.cdate }</span>

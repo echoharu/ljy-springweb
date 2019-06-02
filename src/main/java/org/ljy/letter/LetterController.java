@@ -38,7 +38,7 @@ public class LetterController {
 	/**
 	 * 보낸 목록
 	 */
-	@GetMapping("/letter/listSend")
+	@GetMapping("/letter/listSent")
 	public void listSent(
 			@RequestParam(value = "page", defaultValue = "1") int page,
 			@SessionAttribute("MEMBER") Member member, Model model) {
@@ -76,7 +76,7 @@ public class LetterController {
 		letter.setSenderId(member.getMemberId());
 		letter.setSenderName(member.getName());
 		letterDao.addLetter(letter);
-		return "redirect:/app/letter/listSend";
+		return "redirect:/app/letter/listSent";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class LetterController {
 	@GetMapping("/letter/delete")
 	public String delete(
 			@RequestParam(value = "mode", required = false) String mode,
-			@RequestParam("letterId") String letterId,
+			@RequestParam("letterId") String letterId, String memberId,
 			@SessionAttribute("MEMBER") Member member) {
 		int updatedRows = letterDao.deleteLetter(letterId,
 				member.getMemberId());
@@ -94,7 +94,7 @@ public class LetterController {
 			throw new RuntimeException("No Authority!");
 
 		if ("SENT".equals(mode))
-			return "redirect:/app/letter/listSend";
+			return "redirect:/app/letter/listSent";
 		else
 			return "redirect:/app/letter/listReceived";
 }

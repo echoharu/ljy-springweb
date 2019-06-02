@@ -28,7 +28,7 @@
 		</c:if>
 	</p>
 	<p>
-		<span>번호 : ${article.articleId }</span> | <span>학번 : ${article.userId }</span>
+		<span>번호 : ${article.articleId }</span> 
 	</p>
 	<p>
 		<span style="font-weight:bold;">제목 : ${article.title }</span> 

@@ -27,7 +27,7 @@ th {
 		<a href="./app/letter/letterForm">편지쓰기</a>
 	</p>
 	<p>전체 ${totalCount }건</p>
-	<form action="./app/article/list">
+	<form action="./app/letter/listReceived">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"
 			min="1" max="${totalCount / 20 + 1 }" step="1" style="width: 50px;">
 		<button type="submit">조회</button>
