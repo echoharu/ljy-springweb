@@ -85,7 +85,7 @@ public class LetterController {
 	@GetMapping("/letter/delete")
 	public String delete(
 			@RequestParam(value = "mode", required = false) String mode,
-			@RequestParam("letterId") String letterId, String memberId,
+			@RequestParam("letterId") String letterId,
 			@SessionAttribute("MEMBER") Member member) {
 		int updatedRows = letterDao.deleteLetter(letterId,
 				member.getMemberId());
@@ -97,5 +97,5 @@ public class LetterController {
 			return "redirect:/app/letter/listSent";
 		else
 			return "redirect:/app/letter/listReceived";
-}
+	}
 }
