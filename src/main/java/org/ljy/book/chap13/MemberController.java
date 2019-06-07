@@ -23,18 +23,6 @@ public class MemberController {
 	@Autowired
 	MemberDao memberDao;
 
-	@RequestMapping("/member/memberInfo")
-	public String memberInfo(HttpSession session) {
-	
-		return "member/memberInfo";
-	}
-
-	@RequestMapping("/member/changePwdForm")
-	public String changePwdForm(HttpSession session) {
-		
-		return "member/changePwdForm";
-	}
-
 	@PostMapping("/member/changePwd")
 	public String submit(
 			@RequestParam("currentPassword") String currentPassword,

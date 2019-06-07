@@ -24,11 +24,11 @@
 		</p>
 		<p>상대방 아이디 :</p>
 		<p>
-			<input type="text" name="receiverId" required>
+			 <input type="text" name="receiverId" value="${param.receiverId }"readonly />
 		</p>
 		<p>상대방 이름 :</p>
 		<p>
-			<input type="text" name="receiverName" required>
+			<input type="text" name="receiverName" value="${param.receiverName }" readonly />
 		</p>
 		<p>
 			<button type="submit">쓰기</button>

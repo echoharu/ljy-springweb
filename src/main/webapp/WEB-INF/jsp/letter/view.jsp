@@ -17,12 +17,16 @@
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<h2>상세정보</h2>
 	<p>
-		<a href="./app/letter/listReceived">받은목록</a>
-		<a href="./app/letter/listSent">보낸목록</a>
-
-		<a href="./app/letter/delete?letterId=${letter.letterId }"
-				onclick="return confirmDelete();">글삭제</a>
-
+		<c:choose>
+			<c:when test="${param.mode == 'SENT' }">
+				<a href="./app/letter/listSent">보낸 목록</a>
+			</c:when>
+			<c:otherwise>
+				<a href="./app/letter/listReceived">받은 목록</a>
+			</c:otherwise>
+		</c:choose>
+		<a href="./app/letter/delete?letterId=${letter.letterId }&mode=${param.mode}"
+			onclick="return confirmDelete();">글 삭제</a>
 	</p>
 	<hr />
 	<p>
